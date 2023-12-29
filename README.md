@@ -560,3 +560,53 @@ A (very long) result is shown to prove the correctness of the query. A better vi
 ![alt text](plt.png "Title")
 #### Interpreation: 
 
+
+
+
+## Query 3
+#### Query: based on the time signature, get the average instrumentalness of the tracks
+```
+db.features.aggregate([
+  {
+    $group: {
+      _id: "$time_signature",
+      average_instrumentalness: { $avg: "$instrumentalness" }
+    }
+  },
+  {
+    $sort: {
+      _id: 1
+    }
+  },
+  {
+    $project: {
+      _id: 0,
+      time_signature: "$_id",
+      average_instrumentalness: 1
+    }
+  }
+])
+```
+#### Result: 
+```
+{
+  average_instrumentalness: 0.3384449754709141,
+  time_signature: 0
+}
+{
+  average_instrumentalness: 0.3533327869221757,
+  time_signature: 1
+}
+{
+  average_instrumentalness: 0.3154482332345381,
+  time_signature: 3
+}
+{
+  average_instrumentalness: 0.25649063421458285,
+  time_signature: 4
+}
+{
+  average_instrumentalness: 0.3072569320669578,
+  time_signature: 5
+}
+
