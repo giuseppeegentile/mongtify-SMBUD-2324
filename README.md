@@ -17,7 +17,7 @@ db.artists.find().forEach(function(doc) {
 ## Query 1
 #### Query: Style the top 10 artists with the highest average album popularity
 ```
-db.albums.aggregate([
+db.albums.aggregate([ 
   {
     $match: {
       album_type: "album"
