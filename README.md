@@ -1,3 +1,5 @@
+## NB: l'md non è più aggiornato, sto usando direttamente il notebook
+
 ## To convert string to array type for genres
 ```
 db.artists.find().forEach(function(doc) {
